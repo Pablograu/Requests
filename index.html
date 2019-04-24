@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hola</h1>
+    <a href="./ajax2.html">Ajax 2</a>
+    <div id="people"></div>
+    <script>
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                var response = JSON.parse(xhttp.responseText)
+                for (var i=0; i<response.length; i++){
+                }
+                var output = ''
+                for (var i = 0; i < 5; i++){
+                    output += '<li>'+response[i].title+'</li>'
+                }
+                document.getElementById('people').innerHTML = output
+            }
+        }
+        xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos/", true)
+        xhttp.send()
+    </script>
+    <script src="moreData.js"></script>
+</body>
+</html>
